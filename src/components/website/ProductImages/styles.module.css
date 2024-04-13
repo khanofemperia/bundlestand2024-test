@@ -1,0 +1,15 @@
+.CustomScrollbar {
+  @apply overflow-x-hidden overflow-y-visible;
+}
+
+.CustomScrollbar::-webkit-scrollbar {
+  @apply w-[5px];
+}
+
+.CustomScrollbar::-webkit-scrollbar-track {
+  @apply bg-white;
+}
+
+.CustomScrollbar::-webkit-scrollbar-thumb {
+  @apply bg-black border-x-2 border-solid border-white;
+}

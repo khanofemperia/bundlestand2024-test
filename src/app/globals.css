@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    outline: 2px solid transparent !important;
+    outline-offset: 2px !important;
+    color: #161616;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  em,
+  strong,
+  i,
+  b,
+  u,
+  a,
+  strike,
+  sub,
+  sup,
+  blockquote,
+  button,
+  div,
+  pre,
+  code {
+    font-size: 1.063rem;
+    line-height: 1.625rem;
+  }
+
+  body {
+    @apply overflow-x-hidden overflow-y-auto;
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-[0.625rem];
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply border-y-0 border-x border-solid border-white transition duration-300 ease-in-out bg-[#bbb] hover:bg-[#9c9c9c];
+  }
+}

@@ -1,0 +1,18 @@
+.rotatingBorder {
+  background: linear-gradient(90deg, #c3c3c3 50%, transparent 0) repeat-x;
+  background-size: 10px 2px;
+  background-position: 0 0;
+  background: linear-gradient(90deg, #c3c3c3 50%, transparent 0) repeat-x,
+    linear-gradient(90deg, #c3c3c3 50%, transparent 0) repeat-x,
+    linear-gradient(0deg, #c3c3c3 50%, transparent 0) repeat-y,
+    linear-gradient(0deg, #c3c3c3 50%, transparent 0) repeat-y;
+  background-size: 10px 2px, 10px 2px, 2px 10px, 2px 10px;
+  background-position: 0 0, 0 100%, 0 0, 100% 0;
+  animation: rotate 0.3s infinite linear;
+}
+
+@keyframes rotate {
+  100% {
+    background-position: -10px 0, 10px 100%, 0 10px, 100% -10px;
+  }
+}

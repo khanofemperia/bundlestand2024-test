@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-gray;
+  }
+
+  .heading-size-h1 {
+    @apply font-semibold text-[1.625rem] leading-[3.25rem];
+  }
+
+  .heading-size-h2 {
+    @apply font-semibold text-[1.25rem] leading-[2.875rem];
+  }
+
+  .heading-size-h3 {
+    @apply text-[0.875rem] leading-5 font-semibold;
+  }
+}
