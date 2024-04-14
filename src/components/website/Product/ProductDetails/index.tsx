@@ -7,12 +7,23 @@ import { cookies } from "next/headers";
 import config from "@/libraries/config";
 import styles from "./description.module.css";
 import SpecialOfferOverlay from "../../SpecialOfferOverlay";
+import Link from "next/link";
+import ProductCard from "../../Storefront/ProductCard";
+import { QuickviewButton } from "../../Storefront/Quickview";
 
 type ProductInCartProps = {
   id: string;
   color: string;
   size: string;
 };
+
+async function getRecommendedProducts() {
+  const response = await fetch(`${config.BASE_URL}api/recommended/`, {
+    cache: "no-store",
+  });
+
+  return response.json();
+}
 
 async function getCart() {
   const deviceIdentifier = cookies().get("device_identifier")?.value;
@@ -55,6 +66,8 @@ export default async function Product({ data }: { data: ProductProps }) {
       (p: ProductInCartProps) => p.id === id
     );
   }
+
+  const recommendedProducts: ProductProps[] = await getRecommendedProducts();
 
   return (
     <>
@@ -138,165 +151,73 @@ export default async function Product({ data }: { data: ProductProps }) {
               <SpecialOffer />
             </div>
           </div>
-          <section>
-            <h1 className="font-bold text-[22px] mb-8">More for you</h1>
-            <div className="w-max max-w-full pb-16 flex flex-wrap justify-start gap-3">
-              <div className="w-[210px] mb-4">
-                <div className="w-max h-[210px] rounded-2xl flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="https://i.pinimg.com/736x/f3/08/94/f308948a380b345a20e1e935a96f914f.jpg"
-                    alt={""}
-                    width={210}
-                    height={210}
-                    priority={true}
-                  />
-                </div>
-                <div className="mt-[0.375rem] text-[0.938rem] leading-5 line-clamp-1">
-                  Women's Low Waist Button Bodycon Mini Cargo Denim Skirt with
-                  Pocket
-                </div>
-                <div className="flex items-center mt-[6px]">
-                  <div className="flex items-end gap-2 h-5 w-full">
-                    <p className="[font-family:'Segoe_UI'] text-sm h-[21px] line-through text-gray">
-                      ${price}
-                    </p>
-                  </div>
-                  <button className="bg-[#e4e6eb] outline-none border-none w-16 h-8 rounded-full flex items-center justify-center">
-                    <Image
-                      src="/cart_plus.svg"
-                      alt="Add to cart"
-                      width={23}
-                      height={23}
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className="w-[210px] mb-4">
-                <div className="w-full h-[210px] rounded-2xl flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="https://i.pinimg.com/564x/f8/78/af/f878af550530db82830c6f6efac82bdc.jpg"
-                    alt={""}
-                    width={210}
-                    height={210}
-                    priority={true}
-                  />
-                </div>
-                <div className="mt-[0.375rem] text-[0.938rem] leading-5 line-clamp-1">
-                  Skirts for Women Regular and Plus Size Skirt with Pockets
-                  Below The Knee Length Ruched Flowy Midi Skirt
-                </div>
-                <div className="flex items-center mt-[6px]">
-                  <div className="flex items-end gap-2 h-5 w-full">
-                    <p className="[font-family:'Segoe_UI'] text-sm h-[21px] line-through text-gray">
-                      ${price}
-                    </p>
-                  </div>
-                  <button className="bg-[#e4e6eb] outline-none border-none w-16 h-8 rounded-full flex items-center justify-center">
-                    <Image
-                      src="/cart_plus.svg"
-                      alt="Add to cart"
-                      width={23}
-                      height={23}
-                      priority={true}
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className="w-[210px] mb-4">
-                <div className="w-full h-[210px] rounded-2xl flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="https://i.pinimg.com/736x/da/34/51/da34519682690f44fd937ef503c3e1b8.jpg"
-                    alt={""}
-                    width={1000}
-                    height={1000}
-                    priority={true}
-                  />
-                </div>
-                <div className="mt-[0.375rem] text-[0.938rem] leading-5 line-clamp-1">
-                  High Waisted Pleated Tennis Skirt with Pockets Athletic Golf
-                  Skorts for Women Casual Workout Built-in Shorts
-                </div>
-                <div className="flex items-center mt-[6px]">
-                  <div className="flex items-end gap-2 h-5 w-full">
-                    <p className="[font-family:'Segoe_UI'] text-sm h-[21px] line-through text-gray">
-                      ${price}
-                    </p>
-                  </div>
-                  <button className="bg-[#e4e6eb] outline-none border-none w-16 h-8 rounded-full flex items-center justify-center">
-                    <Image
-                      src="/cart_plus.svg"
-                      alt="Add to cart"
-                      width={23}
-                      height={23}
-                      priority={true}
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className="w-[210px] mb-4">
-                <div className="w-full h-[210px] rounded-2xl flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="https://i.pinimg.com/564x/44/14/c7/4414c747115090f0a9cbbc662a4fbbb5.jpg"
-                    alt={""}
-                    width={1000}
-                    height={1000}
-                    priority={true}
-                  />
-                </div>
-                <div className="mt-[0.375rem] text-[0.938rem] leading-5 line-clamp-1">
-                  Faux Mini Elastic High Waist Plus Size Pencil Aline Bodycon
-                  Vegan Stretch Elegant Skirts S-XXL
-                </div>
-                <div className="flex items-center mt-[6px]">
-                  <div className="flex items-end gap-2 h-5 w-full">
-                    <p className="[font-family:'Segoe_UI'] text-sm h-[21px] line-through text-gray">
-                      ${price}
-                    </p>
-                  </div>
-                  <button className="bg-[#e4e6eb] outline-none border-none w-16 h-8 rounded-full flex items-center justify-center">
-                    <Image
-                      src="/cart_plus.svg"
-                      alt="Add to cart"
-                      width={23}
-                      height={23}
-                      priority={true}
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className="w-[210px] mb-4">
-                <div className="w-full h-[210px] rounded-2xl flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="https://i.pinimg.com/736x/98/5c/70/985c70075d20d46c7251e124de4bab10.jpg"
-                    alt={""}
-                    width={1000}
-                    height={1000}
-                    priority={true}
-                  />
-                </div>
-                <div className="mt-[0.375rem] text-[0.938rem] leading-5 line-clamp-1">
-                  Floral Print Midi Skirt Casual High Elastic Waist Zipper
-                  Vintage Long Boho Skirts for Women
-                </div>
-                <div className="flex items-center mt-[6px]">
-                  <div className="flex items-end gap-2 h-5 w-full">
-                    <p className="[font-family:'Segoe_UI'] text-sm h-[21px] line-through text-gray">
-                      ${price}
-                    </p>
-                  </div>
-                  <button className="bg-[#e4e6eb] outline-none border-none w-16 h-8 rounded-full flex items-center justify-center">
-                    <Image
-                      src="/cart_plus.svg"
-                      alt="Add to cart"
-                      width={23}
-                      height={23}
-                      priority={true}
-                    />
-                  </button>
-                </div>
-              </div>
+          <div className="">
+            <div className="w-full mb-5 px-[10px] flex items-center gap-2">
+              <h2 className="text-[22px] font-semibold">Shop now</h2>
             </div>
-          </section>
+            <div className="w-full flex flex-wrap">
+              {recommendedProducts.map(
+                (
+                  {
+                    id,
+                    name,
+                    poster,
+                    price,
+                    slug,
+                    images,
+                    description,
+                    colors,
+                    sizes,
+                  },
+                  index
+                ) => (
+                  <div
+                    key={index}
+                    className="w-[338px] h-[402px] rounded-2xl select-none relative ease-in-out hover:ease-out hover:duration-300 hover:before:content-[''] hover:before:absolute hover:before:top-0 hover:before:bottom-0 hover:before:left-0 hover:before:right-0 hover:before:rounded-2xl hover:before:shadow-custom3"
+                  >
+                    <Link
+                      href={`/${slug}-${id}`}
+                      target="_blank"
+                      className="w-[318px] h-[318px] cursor-pointer z-[1] absolute top-[10px] left-[10px] right-[10px] bg-gray rounded-xl flex items-center justify-center overflow-hidden"
+                    >
+                      <Image
+                        src={poster}
+                        alt={name}
+                        width={318}
+                        height={318}
+                        priority={true}
+                      />
+                    </Link>
+                    <ProductCard
+                      id={id}
+                      name={name}
+                      slug={slug}
+                      price={price}
+                    />
+                    <QuickviewButton
+                      product={{
+                        id,
+                        name,
+                        price,
+                        poster,
+                        images,
+                        description,
+                        colors,
+                        sizes,
+                        slug,
+                      }}
+                    />
+                  </div>
+                )
+              )}
+            </div>
+            <a
+              className="before:content-[''] before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0 before:border before:border-black before:rounded-full hover:before:scale-105 relative mx-auto mt-6 rounded-full h-12 w-max px-14 flex items-center justify-center"
+              href="#"
+            >
+              See more
+            </a>
+          </div>
         </div>
       </div>
       <ShowAlert />
