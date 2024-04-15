@@ -97,3 +97,20 @@ type OfferProps = {
   date_created: string;
   last_updated: string;
 };
+
+type CartProps = {
+  device_identifier: string;
+  products: {
+    size: string;
+    color: string;
+    id: string;
+  }[];
+  date_created: {
+    seconds: number;
+    nanoseconds: number;
+  };
+  last_updated: {
+    seconds: number;
+    nanoseconds: number;
+  };
+};

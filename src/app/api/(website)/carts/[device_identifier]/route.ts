@@ -5,9 +5,17 @@ import {
   query,
   where,
   updateDoc,
+  doc,
+  getDoc,
 } from "firebase/firestore";
 import { database } from "@/libraries/firebase";
 import { statusCodes } from "@/libraries/utils";
+
+type CartItemProps = {
+  id: string;
+  color: string;
+  size: string;
+};
 
 function generateResponse(
   code: number,
@@ -40,7 +48,36 @@ export async function GET(
 
   const cart = snapshot.docs[0].data();
 
-  return NextResponse.json(cart);
+  const getProducts = cart.products.map(async (product: CartItemProps) => {
+    const itemRef = doc(collection(database, "products"), product.id);
+    const itemSnapshot = await getDoc(itemRef);
+
+    if (itemSnapshot.exists()) {
+      const data = itemSnapshot.data();
+
+      return {
+        id: itemSnapshot.id,
+        name: data.name,
+        price: data.price,
+        poster: data.poster,
+        images: data.images,
+        status: data.status,
+        visibility: data.visibility,
+        color: product.color,
+        size: product.size,
+        slug: data.slug,
+      };
+    }
+  });
+
+  const products = await Promise.all(getProducts);
+
+  const cartData = {
+    ...cart,
+    products: products.filter((item) => item !== null),
+  };
+
+  return NextResponse.json(cartData);
 }
 
 export async function PUT(

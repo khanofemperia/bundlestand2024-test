@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import CheckoutButton from "../CheckoutButton";
+import ViewCartButton from "../ViewCartButton";
 import { HiMiniChevronRight, HiXMark } from "react-icons/hi2";
 import { useOverlayStore } from "@/zustand/website/overlayStore";
 import { productInternationalSizes } from "@/libraries/utils";
@@ -471,7 +471,7 @@ export default function ProductOptions({
         </div>
       )}
       {cartInfo.isInCart || response?.success ? (
-        <CheckoutButton />
+        <ViewCartButton />
       ) : (
         <div className="flex flex-col gap-3">
           <button

@@ -151,7 +151,7 @@ export default async function Product({ data }: { data: ProductProps }) {
               <SpecialOffer />
             </div>
           </div>
-          <div className="">
+          <div className="mb-20">
             <div className="w-full mb-5 px-[10px] flex items-center gap-2">
               <h2 className="text-[22px] font-semibold">Shop now</h2>
             </div>
@@ -173,18 +173,18 @@ export default async function Product({ data }: { data: ProductProps }) {
                 ) => (
                   <div
                     key={index}
-                    className="w-[338px] h-[402px] rounded-2xl select-none relative ease-in-out hover:ease-out hover:duration-300 hover:before:content-[''] hover:before:absolute hover:before:top-0 hover:before:bottom-0 hover:before:left-0 hover:before:right-0 hover:before:rounded-2xl hover:before:shadow-custom3"
+                    className="w-[332px] h-[402px] rounded-2xl select-none relative ease-in-out hover:ease-out hover:duration-300 hover:before:content-[''] hover:before:absolute hover:before:top-0 hover:before:bottom-0 hover:before:left-0 hover:before:right-0 hover:before:rounded-2xl hover:before:shadow-custom3"
                   >
                     <Link
                       href={`/${slug}-${id}`}
                       target="_blank"
-                      className="w-[318px] h-[318px] cursor-pointer z-[1] absolute top-[10px] left-[10px] right-[10px] bg-gray rounded-xl flex items-center justify-center overflow-hidden"
+                      className="w-[312px] h-[312px] cursor-pointer z-[1] absolute top-[10px] left-[10px] right-[10px] bg-gray rounded-xl flex items-center justify-center overflow-hidden"
                     >
                       <Image
                         src={poster}
                         alt={name}
-                        width={318}
-                        height={318}
+                        width={312}
+                        height={312}
                         priority={true}
                       />
                     </Link>
