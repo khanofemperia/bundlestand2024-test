@@ -76,8 +76,6 @@ export default async function Shop() {
   const collections: CollectionProps[] = await getCollections();
   const recommendedProducts: ProductProps[] = await getRecommendedProducts();
 
-  console.log(collections[0].products);
-
   return (
     <>
       <div className="mt-11">
