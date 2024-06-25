@@ -160,7 +160,9 @@ export default async function Product({ data }: { data: ProductProps }) {
                     size={20}
                   />
                 </div>
-                <div className="text-[#008a00]">18,640+ Happy Customers</div>
+                <div className="text-[#008a00] font-medium">
+                  18,640+ Happy Customers
+                </div>
               </div>
               <div className="pt-5 pb-7 flex flex-col gap-3">
                 <p className="text-lg">
@@ -177,7 +179,7 @@ export default async function Product({ data }: { data: ProductProps }) {
                   <li>Quick-dry fabric for cool comfort.</li>
                   <li>Double layer design for better movement.</li>
                   <li>Zipper pocket to secure your phone.</li>
-                  <li>Ideal for all fitness and daily activities.</li>
+                  <li>Ideal for running, gym, and casual wear.</li>
                 </ul>
               </div>
               <div className="flex flex-col gap-8">
