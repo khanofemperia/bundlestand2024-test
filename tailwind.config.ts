@@ -72,6 +72,9 @@ const config: Config = {
         "green-dust-and-scratches":
           "url('/backgrounds/green-dust-and-scratches.png')",
       },
+      listStyleImage: {
+        checkmark: "url('/checkmark.svg')",
+      },
     },
   },
   plugins: [],

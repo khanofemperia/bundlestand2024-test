@@ -10,6 +10,7 @@ import SpecialOfferOverlay from "../../SpecialOfferOverlay";
 import Link from "next/link";
 import ProductCard from "../../Storefront/ProductCard";
 import { QuickviewButton } from "../../Storefront/Quickview";
+import { HiOutlineStar } from "react-icons/hi2";
 
 type ProductInCartProps = {
   id: string;
@@ -134,21 +135,66 @@ export default async function Product({ data }: { data: ProductProps }) {
                 </div>
               </div> */}
             </div>
-            <div className="w-[394px] mt-[18px] ml-5 flex flex-col gap-8">
-              <p className="mt-[-6px]">{name}</p>
-              <ProductOptions
-                cartInfo={{
-                  isInCart,
-                  productInCart,
-                }}
-                productInfo={{
-                  id,
-                  price,
-                  colors,
-                  sizeChart: sizes,
-                }}
-              />
-              <SpecialOffer />
+            <div className="w-[394px] mt-[18px] ml-5 flex flex-col">
+              <p className="mt-[-6px] text-sm">{name}</p>
+              <div className="mt-2 flex items-center gap-1">
+                <div className="flex gap-[1px]">
+                  <HiOutlineStar
+                    className="stroke-[#fbbe1f] fill-yellow-400"
+                    size={20}
+                  />
+                  <HiOutlineStar
+                    className="stroke-[#fbbe1f] fill-yellow-400"
+                    size={20}
+                  />
+                  <HiOutlineStar
+                    className="stroke-[#fbbe1f] fill-yellow-400"
+                    size={20}
+                  />
+                  <HiOutlineStar
+                    className="stroke-[#fbbe1f] fill-yellow-400"
+                    size={20}
+                  />
+                  <HiOutlineStar
+                    className="stroke-[#fbbe1f] fill-yellow-400"
+                    size={20}
+                  />
+                </div>
+                <div className="text-green">18,640+ Happy Customers</div>
+              </div>
+              <div className="pt-5 pb-7 flex flex-col gap-3">
+                <p className="text-lg">
+                  <strong className="text-blue font-bold text-lg">
+                    Struggling with uncomfortable shorts during workouts?
+                  </strong>{" "}
+                  Say no more, our shorts guarantee{" "}
+                  <strong>
+                    <em className="text-lg">comfort and style</em>
+                  </strong>{" "}
+                  for every activity!
+                </p>
+                <ul className="text-sm list-inside list-image-checkmark *:leading-6">
+                  <li>Quick-dry fabric for cool comfort.</li>
+                  <li>Double layer design for better movement.</li>
+                  <li>Zipper pocket to secure your phone.</li>
+                  <li>Ideal for all fitness and daily activities.</li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-8">
+                <ProductOptions
+                  cartInfo={{
+                    isInCart,
+                    productInCart,
+                  }}
+                  productInfo={{
+                    id,
+                    price,
+                    colors,
+                    sizeChart: sizes,
+                  }}
+                />
+              </div>
+              {/* <SpecialOffer /> */}
             </div>
           </div>
           <div className="mb-20">
