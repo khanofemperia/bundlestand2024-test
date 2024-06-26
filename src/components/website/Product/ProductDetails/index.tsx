@@ -5,7 +5,7 @@ import ProductOptions from "../ProductOptions";
 import ShowAlert from "../ShowAlert";
 import { cookies } from "next/headers";
 import config from "@/libraries/config";
-import styles from "./description.module.css";
+import upsellStyles from "./upsell.module.css";
 import SpecialOfferOverlay from "../../SpecialOfferOverlay";
 import Link from "next/link";
 import ProductCard from "../../Storefront/ProductCard";
@@ -17,14 +17,6 @@ type ProductInCartProps = {
   color: string;
   size: string;
 };
-
-async function getRecommendedProducts() {
-  const response = await fetch(`${config.BASE_URL}api/recommended/`, {
-    cache: "no-store",
-  });
-
-  return response.json();
-}
 
 async function getCart() {
   const deviceIdentifier = cookies().get("device_identifier")?.value;
@@ -68,8 +60,6 @@ export default async function Product({ data }: { data: ProductProps }) {
     );
   }
 
-  const recommendedProducts: ProductProps[] = await getRecommendedProducts();
-
   return (
     <>
       <div className="w-[1024px] px-[14px] mx-auto flex items-end flex-col justify-end">
@@ -77,7 +67,7 @@ export default async function Product({ data }: { data: ProductProps }) {
           <div className="flex flex-row pt-5 mb-20 w-max">
             <div className="w-[582px]">
               <ProductImages images={data.images} poster={poster} name={name} />
-              {description && (
+              {/* {description && (
                 <div className="w-full mt-[22px] p-5 rounded-[24px] bg-gray text-xl">
                   <div
                     id="product-description"
@@ -85,7 +75,7 @@ export default async function Product({ data }: { data: ProductProps }) {
                     dangerouslySetInnerHTML={{ __html: description || "" }}
                   />
                 </div>
-              )}
+              )} */}
               {/* <div className="w-full mt-[22px] p-5 rounded-[24px] bg-gray text-xl">
                 <div>
                   <p>
@@ -182,7 +172,7 @@ export default async function Product({ data }: { data: ProductProps }) {
                   <li>Ideal for running, gym, and casual wear.</li>
                 </ul>
               </div>
-              <div className="flex flex-col gap-8">
+              {/* <div className="flex flex-col gap-8">
                 <ProductOptions
                   cartInfo={{
                     isInCart,
@@ -195,11 +185,32 @@ export default async function Product({ data }: { data: ProductProps }) {
                     sizeChart: sizes,
                   }}
                 />
+              </div> */}
+              <div
+                className={`${upsellStyles.custom_border} mt-1 p-4 w-full rounded-md`}
+              >
+                <div className="w-full">
+                  <div>
+                    <h2 className="font-black text-center text-xl text-red leading-6 [letter-spacing:-1px] [word-spacing:2px] [text-shadow:#707070_0px_1px_0px] w-[248px] mx-auto">
+                      UPGRADE MY ORDER
+                    </h2>
+                  </div>
+                  <div className="h-[240px] aspect-square mx-auto overflow-hidden">
+                    <Image
+                      // src="https://i.pinimg.com/564x/ab/d7/1b/abd71b557fc77916f1570da50c0325a8.jpg"
+                      src="https://i.pinimg.com/564x/4e/49/59/4e49591bcdc390aec8673e12d57a0f90.jpg"
+                      alt="Upgrade my order"
+                      width={240}
+                      height={240}
+                      priority
+                    />
+                  </div>
+                </div>
               </div>
               {/* <SpecialOffer /> */}
             </div>
           </div>
-          <div className="mb-20">
+          {/* <div className="mb-20">
             <div className="w-full mb-5 px-[10px] flex items-center gap-2">
               <h2 className="text-[22px] font-semibold">Shop now</h2>
             </div>
@@ -265,7 +276,7 @@ export default async function Product({ data }: { data: ProductProps }) {
             >
               See more
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
       <ShowAlert />
