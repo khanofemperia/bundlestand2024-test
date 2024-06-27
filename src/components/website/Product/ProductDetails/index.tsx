@@ -126,7 +126,9 @@ export default async function Product({ data }: { data: ProductProps }) {
               </div> */}
             </div>
             <div className="w-[394px] mt-[18px] ml-5 flex flex-col">
-              <p className="mt-[-6px] text-sm text-gray">{name}</p>
+              <p className="mt-[-6px] text-sm text-gray">
+                High Waisted Running Shorts
+              </p>
               <div className="mt-2 flex items-center gap-1">
                 <div className="flex gap-[1px]">
                   <HiOutlineStar
@@ -155,13 +157,13 @@ export default async function Product({ data }: { data: ProductProps }) {
                 </div>
               </div>
               <div className="pt-5 pb-7 flex flex-col gap-3">
-                <p className="text-lg">
-                  <strong className="text-blue2 font-bold text-lg">
+                <p className="text-xl">
+                  <strong className="font-bold text-xl">
                     Struggling with uncomfortable shorts during workouts?
                   </strong>{" "}
                   Say no more, our shorts guarantee{" "}
                   <strong>
-                    <em className="text-lg">comfort and style</em>
+                    <em className="text-xl">comfort and style</em>
                   </strong>{" "}
                   for every activity!
                 </p>
@@ -187,15 +189,27 @@ export default async function Product({ data }: { data: ProductProps }) {
                 />
               </div> */}
               <div
-                className={`${upsellStyles.custom_border} mt-1 p-4 w-full rounded-md`}
+                className={`${upsellStyles.custom_border} mt-1 py-4 px-10 w-max rounded-md`}
               >
                 <div className="w-full">
                   <div>
-                    <h2 className="font-black text-center text-xl text-red leading-6 [letter-spacing:-1px] [word-spacing:2px] [text-shadow:#707070_0px_1px_0px] w-[248px] mx-auto">
+                    <h2 className="font-black text-center text-[21px] text-red leading-6 [letter-spacing:-1px] [word-spacing:2px] [text-shadow:#707070_0px_1px_0px] w-[248px] mx-auto">
                       UPGRADE MY ORDER
                     </h2>
+                    <div className="mt-1 text-center font-medium text-lg *:text-lg text-gray">
+                      <span className="font-bold text-[#008a00]">$37.99</span>{" "}
+                      (Save 58% - was{" "}
+                      <span className="line-through font-medium text-gray">
+                        $89.99
+                      </span>
+                      )
+                    </div>
+                    {/* <div className="mt-1 text-center">
+                      Today it's yours for <strong>$37.99</strong> (was{" "}
+                      <span className="line-through">$89.99</span>)
+                    </div> */}
                   </div>
-                  <div className="h-[240px] aspect-square mx-auto overflow-hidden">
+                  <div className="mt-2 h-[240px] aspect-square mx-auto overflow-hidden">
                     <Image
                       // src="https://i.pinimg.com/564x/ab/d7/1b/abd71b557fc77916f1570da50c0325a8.jpg"
                       src="https://i.pinimg.com/564x/4e/49/59/4e49591bcdc390aec8673e12d57a0f90.jpg"
