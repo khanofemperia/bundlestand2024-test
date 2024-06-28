@@ -11,6 +11,7 @@ import Link from "next/link";
 import ProductCard from "../../Storefront/ProductCard";
 import { QuickviewButton } from "../../Storefront/Quickview";
 import { HiOutlineStar } from "react-icons/hi2";
+import { HiChevronRight } from "react-icons/hi";
 
 type ProductInCartProps = {
   id: string;
@@ -157,13 +158,13 @@ export default async function Product({ data }: { data: ProductProps }) {
                 </div>
               </div>
               <div className="pt-5 pb-7 flex flex-col gap-3">
-                <p className="text-xl">
-                  <strong className="font-bold text-xl">
+                <p className="text-lg">
+                  <strong className="font-bold text-lg">
                     Struggling with uncomfortable shorts during workouts?
                   </strong>{" "}
                   Say no more, our shorts guarantee{" "}
                   <strong>
-                    <em className="text-xl">comfort and style</em>
+                    <em className="text-lg">comfort and style</em>
                   </strong>{" "}
                   for every activity!
                 </p>
@@ -173,6 +174,20 @@ export default async function Product({ data }: { data: ProductProps }) {
                   <li>Zipper pocket to secure your phone.</li>
                   <li>Ideal for running, gym, and casual wear.</li>
                 </ul>
+              </div>
+              <div className="mb-8">
+                <button className="h-8 border px-4 rounded-full flex items-center justify-center gap-1">
+                  <span className="text-sm font-medium">
+                    Select Size, Color, & Material
+                  </span>
+                  <HiChevronRight size={20} />
+                </button>
+                {/* <button className="h-8 bg-[#e0e0e0] px-4 rounded-full flex items-center justify-center gap-1">
+                  <span className="text-sm font-medium">
+                    Select Size, Color, & Material
+                  </span>
+                  <HiChevronRight size={20} />
+                </button> */}
               </div>
               {/* <div className="flex flex-col gap-8">
                 <ProductOptions
@@ -189,7 +204,7 @@ export default async function Product({ data }: { data: ProductProps }) {
                 />
               </div> */}
               <div
-                className={`${upsellStyles.custom_border} mt-1 py-4 px-10 w-max rounded-md`}
+                className={`${upsellStyles.custom_border} py-4 px-10 w-max rounded-md`}
               >
                 <div className="w-full">
                   <div>
